@@ -66,22 +66,26 @@ btn.setAttribute('class', 'btn btn-danger')
 btn.textContent = 'Countries'
 
 container.append(btn)
+
+btn.addEventListener('click', ulkeOlusturma)
 //? Button Oluşturuldu
 
 //? Ülkeler Card yapısının fonksiyonu
 
 function ulkeOlusturma() {
     const ulkelerDiv = document.createElement('div')
-    ulkelerDiv.setAttribute('class', 'd-flex gap-2 mt-2')
+    ulkelerDiv.setAttribute('class', 'row mt-2')
 
     countries.forEach((ulke) => {
+        const col = document.createElement('div')
+        col.classList.add('col-3')
         // console.log(ulke)
         const cardDiv = document.createElement('div')
         cardDiv.classList.add('card', 'text-center')
         cardDiv.style.width = '18rem'
 
         const cardImg = document.createElement('img')
-        cardImg.src = ulke.flag
+        cardImg.setAttribute('src', ulke.flag)
         cardImg.classList.add('card-img-top')
 
         const cardBody = document.createElement('div')
@@ -93,7 +97,7 @@ function ulkeOlusturma() {
 
         const cardText = document.createElement('p')
         cardText.classList.add('card-text')
-        let content = `${ulke.capital} - ${ulke.languages} - ${ulke.currency}`
+        let content = `${ulke.capital} - ${ulke.languages} - ${ulke.region}`
         cardText.textContent = content
 
         const pop = document.createElement('a')
@@ -108,9 +112,35 @@ function ulkeOlusturma() {
 
         cardDiv.append(cardBody)
 
-        ulkelerDiv.append(cardDiv)
+        col.append(cardDiv)
+
+        ulkelerDiv.append(col)
     })
 
 
     container.append(ulkelerDiv)
+}
+
+
+//? button oluşturma
+const btn2 = document.createElement('button')
+btn2.setAttribute('class', 'btn btn-success mt-2')
+btn2.textContent = 'Population'
+
+container.append(btn2)
+
+btn2.addEventListener('click', populasyonBulma)
+//? button oluşturma
+
+function populasyonBulma() {
+    const populationDiv = document.createElement('div')
+
+    countries.forEach((ulke) => {
+
+        console.log(ulke)
+
+    })
+
+
+
 }
