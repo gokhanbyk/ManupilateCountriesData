@@ -48,3 +48,69 @@
 // //* oluşturulan etiketi htmlden kaldırma
 // document.body.removeChild(div)
 // //! JavaScriptten etiket oluşturma
+
+
+//! Örnek
+
+//? Container divi oluşturuldu
+const container = document.createElement('div')
+container.classList.add('container', 'd-flex', 'align-items-center', 'flex-column', 'my-3')
+// container.setAttribute('class', 'container')
+
+document.body.append(container)
+//? Container divi oluşturuldu
+
+//? Button Oluşturuldu
+const btn = document.createElement('button')
+btn.setAttribute('class', 'btn btn-danger')
+btn.textContent = 'Countries'
+
+container.append(btn)
+//? Button Oluşturuldu
+
+//? Ülkeler Card yapısının fonksiyonu
+
+function ulkeOlusturma() {
+    const ulkelerDiv = document.createElement('div')
+    ulkelerDiv.setAttribute('class', 'd-flex gap-2 mt-2')
+
+    countries.forEach((ulke) => {
+        // console.log(ulke)
+        const cardDiv = document.createElement('div')
+        cardDiv.classList.add('card', 'text-center')
+        cardDiv.style.width = '18rem'
+
+        const cardImg = document.createElement('img')
+        cardImg.src = ulke.flag
+        cardImg.classList.add('card-img-top')
+
+        const cardBody = document.createElement('div')
+        cardBody.classList.add('card-body')
+
+        const cardTitle = document.createElement('h5')
+        cardTitle.classList.add('card-title')
+        cardTitle.textContent = ulke.name
+
+        const cardText = document.createElement('p')
+        cardText.classList.add('card-text')
+        let content = `${ulke.capital} - ${ulke.languages} - ${ulke.currency}`
+        cardText.textContent = content
+
+        const pop = document.createElement('a')
+        pop.setAttribute('class', 'btn btn-warning w-100')
+        pop.textContent = ulke.population
+
+        cardDiv.append(cardImg)
+
+        cardBody.append(cardTitle)
+        cardBody.append(cardText)
+        cardBody.append(pop)
+
+        cardDiv.append(cardBody)
+
+        ulkelerDiv.append(cardDiv)
+    })
+
+
+    container.append(ulkelerDiv)
+}
