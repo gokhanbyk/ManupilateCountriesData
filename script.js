@@ -181,5 +181,53 @@ container.append(btn3)
 
 btn3.addEventListener('click', () => {
     location.reload()
-
 })
+
+
+//? Date
+
+// console.log(date) // Sun Nov 12 2023 15:32:33 GMT+0300 (GMT+03:00)
+
+// console.log(date.getDate()) // ayın gününü aldı 12
+// console.log(date.getDay()) // 0 yani pazar hafatanın gününü aldı
+// console.log(date.getFullYear()) // 2023
+// console.log(date.getHours()) // 15 saati getirir
+// console.log(date.getMilliseconds()) //milisaniye
+// console.log(date.getMinutes()) // 34 dakika
+// console.log(date.getMonth()) //0dan başlar yani, kasım = 10
+// console.log(date.getSeconds()) // saniye
+
+const days = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
+const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+
+
+const p = document.getElementById('saat')
+
+let saat = setInterval(() => {
+    let date = new Date()
+
+
+    let gun = date.getDate()
+    let ay = months[date.getMonth()]
+    let yıl = date.getFullYear()
+    let haftaninGunu = days[date.getDay()]
+
+    let saat = date.getHours()
+    let dakika = date.getMinutes()
+    let saniye = date.getSeconds()
+
+    if (saniye < 10) {
+        saniye = '0' + saniye
+    }
+
+    let tarih = `${gun} ${ay} ${yıl} ${haftaninGunu} - ${saat}:${dakika}:${saniye}`
+
+    p.textContent = tarih
+    // console.log(tarih);
+}, 1000)
+
+
+setTimeout(() => {
+    console.log('5 saniye sonra çalıştı')
+    clearInterval(saat)
+}, 5000)
